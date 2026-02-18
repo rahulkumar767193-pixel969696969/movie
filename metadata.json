@@ -1,0 +1,8 @@
+{
+  "name": "CineAI - Premium Streaming & AI Discovery",
+  "description": "A high-end Netflix-style movie platform featuring AI-powered personalized recommendations, cinematic UI, and advanced search.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
