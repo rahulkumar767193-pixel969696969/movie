@@ -6,7 +6,9 @@ export class GeminiService {
   private ai: GoogleGenAI;
 
   constructor() {
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+    // Safeguard process.env access to prevent deployment crashes
+    const apiKey = (typeof process !== 'undefined' && process.env.API_KEY) ? process.env.API_KEY : '';
+    this.ai = new GoogleGenAI({ apiKey: apiKey });
   }
 
   async getSmartRecommendations(mood: string, movies: Movie[]): Promise<string[]> {
