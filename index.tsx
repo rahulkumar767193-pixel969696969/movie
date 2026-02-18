@@ -1,7 +1,11 @@
-
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
+
+// Global shim to prevent crashes in environments where process is not defined
+if (typeof (window as any).process === 'undefined') {
+  (window as any).process = { env: { API_KEY: '' } };
+}
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

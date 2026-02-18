@@ -1,5 +1,4 @@
-
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Movie, User, UserRole } from './types';
 import { MOVIES, CURRENT_USER } from './mockData';
 import { geminiService } from './services/geminiService';
@@ -13,11 +12,10 @@ import AdminDashboard from './components/AdminDashboard';
 const App: React.FC = () => {
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [user, setUser] = useState<User>(CURRENT_USER);
+  const [user] = useState<User>(CURRENT_USER);
   const [showAIBox, setShowAIBox] = useState(false);
   const [activeTab, setActiveTab] = useState<'home' | 'admin'>('home');
 
-  // Filter logic
   const filteredMovies = useMemo(() => {
     return MOVIES.filter(m => 
       m.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -73,7 +71,7 @@ const App: React.FC = () => {
 
       <footer className="border-t border-white/10 py-10 px-12 text-center text-sm text-gray-500">
         <p>© 2024 CineAI Inc. All rights reserved.</p>
-        <p className="mt-2">Privacy Policy | Terms of Service | Help Center</p>
+        <p className="mt-2 text-xs">Aesthetic Streaming Experience Powered by Gemini</p>
       </footer>
     </div>
   );
